@@ -1,141 +1,219 @@
 <!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, World!</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+      <h1 class="title">Hello World! </h1>
+      <p id="currentTime"></p>
+      <script src="script.js"></script>
+  </body>
+</html><!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simulasi Pinjaman CU REMAUNG KECUBUNG</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Simulasi Pinjaman Credit Union REMAUNG KECUBUNG">
+  <meta name="keywords" content="simulasicurk, Credit Union, Remaung Kecubung, simulasi pinjaman, TALITA KUM">
+  <title>Simulasi Pinjaman Credit Union REMAUNG KECUBUNG</title>
   <style>
     body {
-      font-family: 'Cambria', serif;
-      background-color: #eaf6ff;
-      color: #003366;
-      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f8ff;
+      color: #333;
       margin: 0;
       padding: 0;
+      text-align: center;
     }
+
     header {
-      margin-top: 10px;
-    }
-    img {
-      width: 90px;
-      height: auto;
-      margin-top: 10px;
-    }
-    h1 {
-      margin: 5px;
-    }
-    h1 span.cu {
-      font-style: italic;
-      color: red;
-    }
-    h1 span.nama {
-      font-weight: bold;
-      color: #0047b3;
-    }
-    main {
-      background: white;
-      margin: 20px auto;
       padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 90%;
-      max-width: 400px;
+      background: #e9f2ff;
+      border-bottom: 3px solid #007bff;
     }
-    label {
+
+    header img {
+      width: 90px;
       display: block;
-      text-align: left;
-      margin-top: 10px;
+      margin: 0 auto 10px auto;
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      margin: 0;
+    }
+
+    h1 em {
+      color: red;
+      font-style: italic;
+    }
+
+    h1 strong {
+      color: #0044cc;
+      font-family: 'Cambria', serif;
       font-weight: bold;
     }
+
+    .container {
+      margin: 20px auto;
+      max-width: 450px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+      text-align: left;
+    }
+
     input {
       width: 100%;
       padding: 8px;
-      margin-top: 5px;
+      border-radius: 6px;
       border: 1px solid #ccc;
-      border-radius: 8px;
+      margin-top: 5px;
     }
+
     button {
-      background-color: #007acc;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
       margin-top: 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
     }
+
     button:hover {
-      background-color: #005fa3;
+      background-color: #0056b3;
     }
+
     table {
       width: 100%;
+      margin-top: 20px;
       border-collapse: collapse;
-      margin-top: 15px;
     }
-    th, td {
+
+    table, th, td {
       border: 1px solid #ccc;
-      padding: 6px;
-      font-size: 14px;
     }
+
+    th, td {
+      padding: 8px;
+      text-align: center;
+    }
+
     th {
-      background-color: #cce5ff;
+      background-color: #007bff;
+      color: white;
     }
+
     footer {
-      margin: 20px 0;
-      font-size: 14px;
+      margin-top: 30px;
+      font-size: 0.9rem;
       color: #555;
+      padding-bottom: 10px;
+    }
+
+    .pdf-btn {
+      margin-top: 10px;
+      background-color: #28a745;
+    }
+
+    .pdf-btn:hover {
+      background-color: #1e7e34;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADh..." alt="Logo CU" />
-    <h1>Selamat datang di simulasi pinjaman <span class="cu">Credit Union</span> <span class="nama">REMAUNG KECUBUNG</span></h1>
+    <img src="https://i.ibb.co/1K2qH7p/talita-kum.jpg" alt="Logo TALITA KUM">
+    <h1>Selamat datang di simulasi pinjaman <em>Credit Union</em> <strong>REMAUNG KECUBUNG</strong></h1>
   </header>
 
-  <main>
-    <label>Jumlah Pokok Pinjaman (Rp)</label>
-    <input type="number" id="pokok" placeholder="contoh: 5000000" />
+  <div class="container">
+    <label for="pokok">Jumlah Pokok Pinjaman (Rp)</label>
+    <input type="number" id="pokok" placeholder="Contoh: 10000000">
 
-    <label>Tenor (bulan)</label>
-    <input type="number" id="tenor" placeholder="contoh: 12" />
+    <label for="tenor">Tenor (bulan)</label>
+    <input type="number" id="tenor" placeholder="Contoh: 12">
 
-    <label>Suku Bunga (% per tahun)</label>
-    <input type="number" id="bunga" placeholder="contoh: 12" />
+    <label for="bunga">Suku Bunga per tahun (%)</label>
+    <input type="number" id="bunga" placeholder="Contoh: 12">
 
-    <button onclick="hitung()">Hitung Angsuran</button>
+    <button onclick="hitungAngsuran()">Hitung Angsuran</button>
 
     <div id="hasil"></div>
-  </main>
+    <button class="pdf-btn" onclick="cetakPDF()">Cetak ke PDF</button>
+  </div>
 
-  <footer>
-    ©2025 Credit Union Remaung Kecubung
-  </footer>
+  <footer>© 2025 Credit Union REMAUNG KECUBUNG</footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script>
-    function hitung() {
+    function pembulatan50(angka) {
+      let sisa = angka % 100;
+      if (sisa === 0) return angka;
+      if (sisa <= 50) return angka - sisa + 50;
+      else return angka - sisa + 100;
+    }
+
+    function hitungAngsuran() {
       const pokok = parseFloat(document.getElementById('pokok').value);
       const tenor = parseInt(document.getElementById('tenor').value);
       const bunga = parseFloat(document.getElementById('bunga').value);
 
       if (!pokok || !tenor || !bunga) {
-        alert('Isi semua kolom terlebih dahulu');
+        alert("Mohon isi semua kolom terlebih dahulu!");
         return;
       }
 
       const i = bunga / 12 / 100;
-      const angsuran = pokok * i / (1 - Math.pow(1 + i, -tenor));
-      const angsuranBulat = Math.round(angsuran / 50) * 50;
+      const angsuran = (pokok * i) / (1 - Math.pow(1 + i, -tenor));
+      const angsuranBulat = pembulatan50(Math.round(angsuran));
 
-      let tabel = '<table><tr><th>Bulan</th><th>Angsuran (Rp)</th></tr>';
-      for (let j = 1; j <= tenor; j++) {
-        tabel += `<tr><td>${j}</td><td>${angsuranBulat.toLocaleString('id-ID')}</td></tr>`;
-      }
-      tabel += '</table>';
-
-      document.getElementById('hasil').innerHTML = `
-        <h3>Angsuran per bulan: Rp ${angsuranBulat.toLocaleString('id-ID')}</h3>
-        ${tabel}
+      let sisa = pokok;
+      let tabel = `
+        <h3>Rincian Angsuran</h3>
+        <table>
+          <tr><th>Bulan</th><th>Angsuran (Rp)</th><th>Bunga (Rp)</th><th>Pokok (Rp)</th><th>Sisa Pinjaman (Rp)</th></tr>
       `;
+
+      for (let b = 1; b <= tenor; b++) {
+        const bungaBulan = sisa * i;
+        const pokokBulan = angsuranBulat - bungaBulan;
+        sisa -= pokokBulan;
+        tabel += `<tr>
+          <td>${b}</td>
+          <td>${angsuranBulat.toLocaleString()}</td>
+          <td>${Math.round(bungaBulan).toLocaleString()}</td>
+          <td>${Math.round(pokokBulan).toLocaleString()}</td>
+          <td>${Math.round(sisa > 0 ? sisa : 0).toLocaleString()}</td>
+        </tr>`;
+      }
+
+      tabel += `</table>`;
+      document.getElementById('hasil').innerHTML = tabel;
+    }
+
+    async function cetakPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+      doc.text("Simulasi Pinjaman Credit Union REMAUNG KECUBUNG", 20, 20);
+      doc.html(document.getElementById("hasil"), {
+        callback: function (doc) {
+          doc.save("Simulasi-CURK.pdf");
+        },
+        x: 10,
+        y: 30
+      });
     }
   </script>
 </body>
