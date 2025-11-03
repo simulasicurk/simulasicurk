@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulasi Pinjaman CU REMAUNG KECUBUNG</title>
+  <style>
+    body {
+      font-family: 'Cambria', serif;
+      background-color: #eaf6ff;
+      color: #003366;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      margin-top: 10px;
+    }
+    img {
+      width: 90px;
+      height: auto;
+      margin-top: 10px;
+    }
+    h1 {
+      margin: 5px;
+    }
+    h1 span.cu {
+      font-style: italic;
+      color: red;
+    }
+    h1 span.nama {
+      font-weight: bold;
+      color: #0047b3;
+    }
+    main {
+      background: white;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+    label {
+      display: block;
+      text-align: left;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #007acc;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 6px;
+      font-size: 14px;
+    }
+    th {
+      background-color: #cce5ff;
+    }
+    footer {
+      margin: 20px 0;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADh..." alt="Logo CU" />
+    <h1>Selamat datang di simulasi pinjaman <span class="cu">Credit Union</span> <span class="nama">REMAUNG KECUBUNG</span></h1>
+  </header>
+
+  <main>
+    <label>Jumlah Pokok Pinjaman (Rp)</label>
+    <input type="number" id="pokok" placeholder="contoh: 5000000" />
+
+    <label>Tenor (bulan)</label>
+    <input type="number" id="tenor" placeholder="contoh: 12" />
+
+    <label>Suku Bunga (% per tahun)</label>
+    <input type="number" id="bunga" placeholder="contoh: 12" />
+
+    <button onclick="hitung()">Hitung Angsuran</button>
+
+    <div id="hasil"></div>
+  </main>
+
+  <footer>
+    ©2025 Credit Union Remaung Kecubung
+  </footer>
+
+  <script>
+    function hitung() {
+      const pokok = parseFloat(document.getElementById('pokok').value);
+      const tenor = parseInt(document.getElementById('tenor').value);
+      const bunga = parseFloat(document.getElementById('bunga').value);
+
+      if (!pokok || !tenor || !bunga) {
+        alert('Isi semua kolom terlebih dahulu');
+        return;
+      }
+
+      const i = bunga / 12 / 100;
+      const angsuran = pokok * i / (1 - Math.pow(1 + i, -tenor));
+      const angsuranBulat = Math.round(angsuran / 50) * 50;
+
+      let tabel = '<table><tr><th>Bulan</th><th>Angsuran (Rp)</th></tr>';
+      for (let j = 1; j <= tenor; j++) {
+        tabel += `<tr><td>${j}</td><td>${angsuranBulat.toLocaleString('id-ID')}</td></tr>`;
+      }
+      tabel += '</table>';
+
+      document.getElementById('hasil').innerHTML = `
+        <h3>Angsuran per bulan: Rp ${angsuranBulat.toLocaleString('id-ID')}</h3>
+        ${tabel}
+      `;
+    }
+  </script>
+</body>
+</html>
