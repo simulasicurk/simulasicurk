@@ -1,220 +1,230 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Hello, World!</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-      <h1 class="title">Hello World! </h1>
-      <p id="currentTime"></p>
-      <script src="script.js"></script>
-  </body>
-</html><!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Simulasi Pinjaman Credit Union REMAUNG KECUBUNG">
-  <meta name="keywords" content="simulasicurk, Credit Union, Remaung Kecubung, simulasi pinjaman, TALITA KUM">
-  <title>Simulasi Pinjaman Credit Union REMAUNG KECUBUNG</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f2f8ff;
-      color: #333;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulasi Angsuran Pinjaman - Credit Union REMAUNG KECUBUNG</title>
+<meta name="description" content="Web simulasi angsuran pinjaman Credit Union REMAUNG KECUBUNG. Hitung angsuran pokok, bunga, dan tenor. Download tabel PDF.">
 
-    header {
-      padding: 20px;
-      background: #e9f2ff;
-      border-bottom: 3px solid #007bff;
-    }
+<!-- CSS -->
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+}
 
-    header img {
-      width: 90px;
-      display: block;
-      margin: 0 auto 10px auto;
-    }
+.header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #d0f0fd;
+    border-bottom: 1px solid #ccc;
+}
 
-    h1 {
-      font-size: 1.2rem;
-      margin: 0;
-    }
+.logo {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
 
-    h1 em {
-      color: red;
-      font-style: italic;
-    }
+.brand {
+    font-family: Arial, sans-serif;
+}
 
-    h1 strong {
-      color: #0044cc;
-      font-family: 'Cambria', serif;
-      font-weight: bold;
-    }
+.credit-union {
+    color: red;
+    font-style: italic;
+    font-size: 20px;
+}
 
-    .container {
-      margin: 20px auto;
-      max-width: 450px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 20px;
-    }
+.remaung-kecubung {
+    color: blue;
+    font-weight: bold;
+    font-size: 24px;
+}
 
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 10px;
-      text-align: left;
-    }
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
-    input {
-      width: 100%;
-      padding: 8px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      margin-top: 5px;
-    }
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+input, button {
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 16px;
+}
 
-    button {
-      margin-top: 15px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
+button {
+    cursor: pointer;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+button:hover {
+    background-color: #1565c0;
+}
 
-    button:hover {
-      background-color: #0056b3;
-    }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: right;
+}
+th {
+    background-color: #1976d2;
+    color: white;
+}
 
-    table {
-      width: 100%;
-      margin-top: 20px;
-      border-collapse: collapse;
+@media(max-width:600px){
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
     }
-
-    table, th, td {
-      border: 1px solid #ccc;
+    .logo {
+        margin-bottom: 10px;
     }
-
-    th, td {
-      padding: 8px;
-      text-align: center;
-    }
-
-    th {
-      background-color: #007bff;
-      color: white;
-    }
-
-    footer {
-      margin-top: 30px;
-      font-size: 0.9rem;
-      color: #555;
-      padding-bottom: 10px;
-    }
-
-    .pdf-btn {
-      margin-top: 10px;
-      background-color: #28a745;
-    }
-
-    .pdf-btn:hover {
-      background-color: #1e7e34;
-    }
-  </style>
+}
+</style>
 </head>
 <body>
 
-  <header>
-    <img src="https://i.ibb.co/1K2qH7p/talita-kum.jpg" alt="Logo TALITA KUM">
-    <h1>Selamat datang di simulasi pinjaman <em>Credit Union</em> <strong>REMAUNG KECUBUNG</strong></h1>
-  </header>
+<header class="header">
+    <img src="logo.png" alt="Logo" class="logo">
+    <div class="brand">
+        <span class="credit-union">Credit Union</span><br>
+        <span class="remaung-kecubung">REMAUNG KECUBUNG</span>
+    </div>
+</header>
 
-  <div class="container">
-    <label for="pokok">Jumlah Pokok Pinjaman (Rp)</label>
-    <input type="number" id="pokok" placeholder="Contoh: 10000000">
+<div class="container">
+    <h1>Simulasi Angsuran Pinjaman</h1>
+    <form id="loanForm">
+        <label>Pokok Pinjaman (Rp):</label>
+        <input type="text" id="principal" placeholder="10.000.000" required>
 
-    <label for="tenor">Tenor (bulan)</label>
-    <input type="number" id="tenor" placeholder="Contoh: 12">
+        <label>Tenor (bulan, max 120):</label>
+        <input type="number" id="tenor" max="120" required>
 
-    <label for="bunga">Suku Bunga per tahun (%)</label>
-    <input type="number" id="bunga" placeholder="Contoh: 12">
+        <label>Suku Bunga (% per tahun):</label>
+        <input type="number" id="interest" step="0.01" required>
 
-    <button onclick="hitungAngsuran()">Hitung Angsuran</button>
+        <button type="submit">Hitung Angsuran</button>
+    </form>
 
-    <div id="hasil"></div>
-    <button class="pdf-btn" onclick="cetakPDF()">Cetak ke PDF</button>
-  </div>
+    <div id="result" style="display:none;">
+        <h2>Tabel Simulasi Angsuran</h2>
+        <table id="tableSimulasi">
+            <thead>
+                <tr>
+                    <th>Bulan</th>
+                    <th>Angsuran Pokok (Rp)</th>
+                    <th>Bunga (Rp)</th>
+                    <th>Total Angsuran (Rp)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button id="downloadPdf">Download PDF</button>
+    </div>
+</div>
 
-  <footer>© 2025 Credit Union REMAUNG KECUBUNG</footer>
+<!-- jsPDF & AutoTable -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script>
-    function pembulatan50(angka) {
-      let sisa = angka % 100;
-      if (sisa === 0) return angka;
-      if (sisa <= 50) return angka - sisa + 50;
-      else return angka - sisa + 100;
+<script>
+// Format ribuan
+function formatRupiah(number){
+    return Number(number).toLocaleString('id-ID');
+}
+
+// Pembulatan bunga ke atas ke kelipatan 50
+function roundUp50(num){
+    return Math.ceil(num / 50) * 50;
+}
+
+// Format input ribuan saat diketik
+const principalInput = document.getElementById('principal');
+principalInput.addEventListener('input', function(e){
+    let value = this.value.replace(/\D/g,'');
+    if(value){
+        this.value = Number(value).toLocaleString('id-ID');
+    } else {
+        this.value = '';
     }
+});
 
-    function hitungAngsuran() {
-      const pokok = parseFloat(document.getElementById('pokok').value);
-      const tenor = parseInt(document.getElementById('tenor').value);
-      const bunga = parseFloat(document.getElementById('bunga').value);
+document.getElementById('loanForm').addEventListener('submit', function(e){
+    e.preventDefault();
 
-      if (!pokok || !tenor || !bunga) {
-        alert("Mohon isi semua kolom terlebih dahulu!");
+    let principal = parseInt(document.getElementById('principal').value.replace(/\./g,''));
+    let tenor = parseInt(document.getElementById('tenor').value);
+    let interestRate = parseFloat(document.getElementById('interest').value)/100/12;
+
+    if(tenor > 120){
+        alert('Tenor maksimal 120 bulan!');
         return;
-      }
+    }
 
-      const i = bunga / 12 / 100;
-      const angsuran = (pokok * i) / (1 - Math.pow(1 + i, -tenor));
-      const angsuranBulat = pembulatan50(Math.round(angsuran));
+    let tableBody = document.querySelector('#tableSimulasi tbody');
+    tableBody.innerHTML = "";
 
-      let sisa = pokok;
-      let tabel = `
-        <h3>Rincian Angsuran</h3>
-        <table>
-          <tr><th>Bulan</th><th>Angsuran (Rp)</th><th>Bunga (Rp)</th><th>Pokok (Rp)</th><th>Sisa Pinjaman (Rp)</th></tr>
-      `;
+    let principalPerMonth = Math.round(principal / tenor);
 
-      for (let b = 1; b <= tenor; b++) {
-        const bungaBulan = sisa * i;
-        const pokokBulan = angsuranBulat - bungaBulan;
-        sisa -= pokokBulan;
-        tabel += `<tr>
-          <td>${b}</td>
-          <td>${angsuranBulat.toLocaleString()}</td>
-          <td>${Math.round(bungaBulan).toLocaleString()}</td>
-          <td>${Math.round(pokokBulan).toLocaleString()}</td>
-          <td>${Math.round(sisa > 0 ? sisa : 0).toLocaleString()}</td>
+    for(let i=1; i<=tenor; i++){
+        let remainingPrincipal = principal - principalPerMonth*(i-1);
+        let interest = roundUp50(remainingPrincipal * interestRate);
+        let total = principalPerMonth + interest;
+
+        let row = `<tr>
+            <td>${i}</td>
+            <td>${formatRupiah(principalPerMonth)}</td>
+            <td>${formatRupiah(interest)}</td>
+            <td>${formatRupiah(total)}</td>
         </tr>`;
-      }
-
-      tabel += `</table>`;
-      document.getElementById('hasil').innerHTML = tabel;
+        tableBody.innerHTML += row;
     }
 
-    async function cetakPDF() {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-      doc.text("Simulasi Pinjaman Credit Union REMAUNG KECUBUNG", 20, 20);
-      doc.html(document.getElementById("hasil"), {
-        callback: function (doc) {
-          doc.save("Simulasi-CURK.pdf");
-        },
-        x: 10,
-        y: 30
-      });
-    }
-  </script>
+    document.getElementById('result').style.display = 'block';
+});
+
+document.getElementById('downloadPdf').addEventListener('click', function(){
+    const { jsPDF } = window.jspdf;
+    let doc = new jsPDF();
+    let rows = [];
+    document.querySelectorAll('#tableSimulasi tbody tr').forEach(tr=>{
+        let row = [];
+        tr.querySelectorAll('td').forEach(td=>{
+            row.push(td.innerText);
+        });
+        rows.push(row);
+    });
+
+    doc.text("Simulasi Angsuran Pinjaman", 10, 10);
+    doc.autoTable({ head: [['Bulan','Pokok','Bunga','Total']], body: rows, startY: 20 });
+    doc.save('simulasi_angsuran.pdf');
+});
+</script>
+
 </body>
 </html>
